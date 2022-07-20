@@ -1,0 +1,13 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ .Values.global.name }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    moo.is/name: {{ .Values.global.name }}
+spec:
+  minAvailable: {{ . }}
+  maxUnavailable: {{ . }}
+  selector:
+    matchLabels:
+      moo.is/name: {{ .Values.global.name }}

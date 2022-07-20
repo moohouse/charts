@@ -1,0 +1,9 @@
+apiVersion: getambassador.io/v3alpha1
+kind: Host
+metadata:
+  name: {{ .Values.container.name }}
+  namespace: default
+spec:
+  hostname: wall.moo.is
+  tlsSecret:
+    name: tls-moo

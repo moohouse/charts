@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.global.name }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    moo.is/name: {{ .Values.global.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: {{ .Values.global.name }}
+      app.kubernetes.io/name: {{ .Values.global.name }}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: {{ .Values.global.name }}
+        app.kubernetes.io/name: {{ .Values.global.name }}
+    spec:
+      containers:
+      - name : {{ .Values.global.name }}
+        image: {{ .Values.container.image }}:{{ .Values.container.tag }}
+        imagePullPolicy: {{ .Values.container.pullPolicy }}
+        ports:
+          - containerPort: {{ .Values.service.targetPort }}
+            name: http
+            protocol: TCP

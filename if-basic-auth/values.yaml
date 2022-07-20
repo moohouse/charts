@@ -1,0 +1,10 @@
+replicaCount: 1
+container:
+  name: if-basic-auth
+  image: farm.moo.is/moo/if-basic-auth
+  tag: v1.1.1
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 3000
+  targetPort: 3000

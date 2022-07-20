@@ -1,0 +1,20 @@
+global:
+  name: ui-moo
+  namespace: moo
+  replicaCount: 1
+container:
+  image: ghcr.io/moohouse/ui-moo
+  tag: 0.0.5
+  pullPolicy: IfNotPresent
+service:
+  type: ClusterIP
+  port: 3080
+  targetPort: 3080
+pdb:
+  min: 2
+  max: 2
+hpa:
+  min: 2
+  max: 6
+  cpu: 50
+  ram: 50
