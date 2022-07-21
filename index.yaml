@@ -3,7 +3,17 @@ entries:
   ui-moo:
   - apiVersion: v2
     appVersion: 0.0.5
-    created: "2022-07-21T15:40:32.887702+09:00"
+    created: "2022-07-21T15:59:02.276965+09:00"
+    description: moo.is
+    digest: c44b3be31876b62aa0ca015122c72a2a86b8eb128453a07a347171c3502a7866
+    name: ui-moo
+    type: application
+    urls:
+    - ui-moo-0.0.3.tgz
+    version: 0.0.3
+  - apiVersion: v2
+    appVersion: 0.0.5
+    created: "2022-07-21T15:59:02.276746+09:00"
     description: moo.is
     digest: 54c306c9f58d9038113795ebe82ce0dd15895d69df5b55dce860f335d8dc1fc2
     name: ui-moo
@@ -13,7 +23,7 @@ entries:
     version: 0.0.2
   - apiVersion: v2
     appVersion: 0.0.5
-    created: "2022-07-21T15:40:32.887483+09:00"
+    created: "2022-07-21T15:59:02.276328+09:00"
     description: moo.is
     digest: ee301a6b5b535ecb37c1e07c7663700f3f57414cc7208e17216c767432bec4fe
     name: ui-moo
@@ -21,4 +31,4 @@ entries:
     urls:
     - ui-moo-0.0.1.tgz
     version: 0.0.1
-generated: "2022-07-21T15:40:32.887095+09:00"
+generated: "2022-07-21T15:59:02.275723+09:00"
