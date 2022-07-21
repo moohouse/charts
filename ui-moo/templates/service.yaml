@@ -13,5 +13,6 @@ spec:
       protocol: TCP
       targetPort: {{ .Values.service.targetPort }}
   selector:
-    moo.is/name: {{ .Values.global.name }}
+    app.kubernetes.io/instance: {{ .Values.global.name }}
+    app.kubernetes.io/name: {{ .Values.global.name }}
   sessionAffinity: None
