@@ -26,5 +26,6 @@ spec:
             name: http
             protocol: TCP
       {{- if .Values.container.secret }}
-      imagePullSecrets: {{ .Values.container.secret }}
+      imagePullSecrets:
+        - name : {{ .Values.container.secret }}
       {{- end }}
