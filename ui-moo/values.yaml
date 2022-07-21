@@ -1,6 +1,6 @@
 global:
   name: ui-moo
-  namespace: moo
+  namespace: moo-system
   replicaCount: 1
 container:
   image: ghcr.io/moohouse/ui-moo
