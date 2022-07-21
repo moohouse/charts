@@ -6,6 +6,7 @@ container:
   image: ghcr.io/moohouse/ui-moo
   tag: 0.0.5
   pullPolicy: IfNotPresent
+  secret: moo
 service:
   type: ClusterIP
   port: 3080
