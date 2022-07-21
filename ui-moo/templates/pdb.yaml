@@ -7,7 +7,6 @@ metadata:
     moo.is/name: {{ .Values.global.name }}
 spec:
   minAvailable: {{ . }}
-  maxUnavailable: {{ . }}
   selector:
     matchLabels:
       moo.is/name: {{ .Values.global.name }}
