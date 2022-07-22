@@ -4,7 +4,7 @@ global:
   replicaCount: 1
 container:
   image: ghcr.io/moohouse/ui-moo
-  tag: 0.0.5
+  tag: 0.0.6
   pullPolicy: IfNotPresent
   secret: moo
 service:
