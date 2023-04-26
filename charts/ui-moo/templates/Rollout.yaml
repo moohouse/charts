@@ -20,15 +20,15 @@ spec:
   revisionHistoryLimit: 3
   selector:
     matchLabels:
-      app: ui-moo
+      moo.is/name: {{ .Values.config.name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name:      {{ .Values.config.name }}
-        app.kubernetes.io/instance:  {{ .Values.config.instance }}
-        app.kubernetes.io/part-of:   {{ .Values.config.partof }}
+        app.kubernetes.io/name: {{ .Values.config.name }}
+        app.kubernetes.io/instance: {{ .Values.config.instance }}
+        app.kubernetes.io/part-of: {{ .Values.config.partof }}
         app.kubernetes.io/component: {{ .Values.config.component }}
-        app: {{ .Values.config.name }}
+        moo.is/name: {{ .Values.config.name }}
     spec:
       containers:
         - name : {{ .Values.config.name }}
