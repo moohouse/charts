@@ -7,7 +7,7 @@ env:
   NAME: ui-moo
 jobs:
   build:
-    name: Publish to Github CR
+    name: Publish to Github Page
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
