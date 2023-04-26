@@ -34,7 +34,3 @@ hpa:
   max: 2
   cpu: 50
   ram: 50
-rules:
-  apiGroups: ["moo.is"]
-  resources: ["*"]
-  verbs: ["*"]
