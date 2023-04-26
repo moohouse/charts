@@ -17,5 +17,5 @@ spec:
       protocol: TCP
       targetPort: {{ .Values.service.targetPort }}
   selector:
-    app: {{ .Values.config.name }}
+    moo.is/name: {{ .Values.config.name }}
   sessionAffinity: None
