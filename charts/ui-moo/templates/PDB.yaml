@@ -13,4 +13,4 @@ spec:
   minAvailable: {{ .Values.pdb.min }}
   selector:
     matchLabels:
-      moo.is/name: {{ .Values.global.name }}
+      moo.is/name: {{ .Values.config.name }}
