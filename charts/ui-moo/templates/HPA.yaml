@@ -11,7 +11,7 @@ metadata:
     moo.is/name: {{ .Values.config.name }}
 spec:
   scaleTargetRef:
-    apiVersion: apps/v1
+    apiVersion: argoproj.io/v1alpha1
     kind: Rollout
     name: {{ .Values.config.name }}
   minReplicas: {{ .Values.hpa.min }}
