@@ -1,6 +1,10 @@
-global:
+config:
   name: ui-moo
-  namespace: moo-system
+  instance: moo
+  partof: mooheadtown
+  component: front
+  namespace: barn
+deployment:
   replicaCount: 1
 container:
   image: ghcr.io/moohouse/ui-moo
@@ -9,12 +13,28 @@ container:
   secret: moo
 service:
   type: ClusterIP
-  port: 80
-  targetPort: 10000
+  port: 9000
+  targetPort: 9000
+istio:
+  rollout:
+    route: ["http"]
+  vs:
+    host: ["moo.is"]
+    gateway: ["gateway-moo-is"]
+    stable:
+      host: ui-moo-stable.barn.svc.cluster.local
+      port: 9000
+    canary:
+      host: ui-moo-canary.barn.svc.cluster.local
+      port: 9000
 pdb:
-  min: 2
+  min: 1
 hpa:
-  min: 4
-  max: 6
+  min: 1
+  max: 2
   cpu: 50
   ram: 50
+rules:
+  apiGroups: ["moo.is"]
+  resources: ["*"]
+  verbs: ["*"]

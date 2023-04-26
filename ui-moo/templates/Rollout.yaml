@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: {{ .Values.config.name }}
+  namespace: {{ .Values.config.namespace }}
+spec:
+  replicas: {{ .Values.deployment.replicaCount }}
+  strategy:
+    canary:
+      canaryService: {{ .Values.config.name }}-canary
+      stableService: {{ .Values.config.name }}-stable
+      trafficRouting:
+        istio:
+          virtualServices:
+            - name: {{ .Values.config.name }}
+              routes: {{ .Values.istio.vs.route }}
+      steps:
+        - setWeight: 10
+        - pause: {}
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app: ui-moo
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name:      {{ .Values.config.name }}
+        app.kubernetes.io/instance:  {{ .Values.config.instance }}
+        app.kubernetes.io/part-of:   {{ .Values.config.partof }}
+        app.kubernetes.io/component: {{ .Values.config.component }}
+        app: {{ .Values.config.name }}
+    spec:
+      containers:
+        - name : {{ .Values.config.name }}
+          image: {{ .Values.container.image }}:{{ .Values.container.tag }}
+          imagePullPolicy: {{ .Values.container.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.service.targetPort }}
+              name: http
+              protocol: TCP
+      {{- if .Values.container.secret }}
+      imagePullSecrets:
+        - name : {{ .Values.container.secret }}
+      {{- end }}

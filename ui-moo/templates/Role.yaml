@@ -1,0 +1,35 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ .Values.config.name }}
+  namespace: {{ .Values.config.namespace }}
+  labels:
+    app.kubernetes.io/name:      {{ .Values.config.name }}
+    app.kubernetes.io/instance:  {{ .Values.config.instance }}
+    app.kubernetes.io/part-of:   {{ .Values.config.partof }}
+    app.kubernetes.io/component: {{ .Values.config.component }}
+    app: {{ .Values.config.name }}
+rules:
+  - apiGroups: {{ .Values.rules.apiGroups }}
+    resources: {{ .Values.rules.resources }}
+    verbs: {{ .Values.rules.verbs }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ .Values.config.name }}
+  namespace: {{ .Values.config.namespace }}
+  labels:
+    app.kubernetes.io/name:      {{ .Values.config.name }}
+    app.kubernetes.io/instance:  {{ .Values.config.instance }}
+    app.kubernetes.io/part-of:   {{ .Values.config.partof }}
+    app.kubernetes.io/component: {{ .Values.config.component }}
+    app:  {{ .Values.config.name }}
+roleRef:
+  kind: Role
+  apiGroup: rbac.authorization.k8s.io
+  name: {{ .Values.config.name }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ .Values.config.name }}
+    namespace: {{ .Values.config.namespace }}

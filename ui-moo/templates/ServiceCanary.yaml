@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.config.name }}-canary
+  namespace: {{ .Values.config.namespace }}
+  labels:
+    app.kubernetes.io/name:      {{ .Values.config.name }}
+    app.kubernetes.io/instance:  {{ .Values.config.instance }}
+    app.kubernetes.io/part-of:   {{ .Values.config.partof }}
+    app.kubernetes.io/component: {{ .Values.config.component }}
+    app: {{ .Values.config.name }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - name: http
+      port: {{ .Values.service.port }}
+      protocol: TCP
+      targetPort: {{ .Values.service.targetPort }}
+  selector:
+    app: {{ .Values.config.name }}
+  sessionAffinity: None
