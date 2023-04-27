@@ -14,6 +14,16 @@ entries:
   ui-moo:
   - apiVersion: v2
     appVersion: latest
+    created: "2023-04-27T08:12:53.369273556Z"
+    description: moo.is
+    digest: 6e70a914f1e232f9ac097229f590343f550edb1470a1d2bd3e936c2c08ec1674
+    name: ui-moo
+    type: application
+    urls:
+    - https://github.com/moohouse/charts/releases/download/ui-moo-1.0.100/ui-moo-1.0.100.tgz
+    version: 1.0.100
+  - apiVersion: v2
+    appVersion: latest
     created: "2023-04-26T12:51:35.992656566Z"
     description: moo.is
     digest: b672568caaac4391c963d244477147a312bfec7f0c5534b4d186394fca7c7f03
@@ -62,4 +72,4 @@ entries:
     urls:
     - https://github.com/moohouse/charts/releases/download/ui-moo-0.2.2/ui-moo-0.2.2.tgz
     version: 0.2.2
-generated: "2023-04-26T12:51:35.992676166Z"
+generated: "2023-04-27T08:12:53.369296057Z"
