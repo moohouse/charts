@@ -5,7 +5,7 @@ config:
   component: front
   namespace: barn
 deployment:
-  replicaCount: 2
+  replicaCount: 1
 container:
   image: ghcr.io/moohouse/ui-moo
   tag: '86'
@@ -30,7 +30,7 @@ istio:
 pdb:
   min: 1
 hpa:
-  min: 2
-  max: 2
+  min: 1
+  max: 4
   cpu: 50
   ram: 50
