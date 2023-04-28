@@ -10,7 +10,7 @@ container:
   image: ghcr.io/moohouse/ui-moo
   tag: 88
   pullPolicy: IfNotPresent
-  secret: moo
+  secret: moohouse
 service:
   type: ClusterIP
   port: 9000
