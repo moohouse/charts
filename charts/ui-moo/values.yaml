@@ -8,7 +8,7 @@ deployment:
   replicaCount: 2
 container:
   image: ghcr.io/moohouse/ui-moo
-  tag: 8483807978100
+  tag: '85'8483807978100
   pullPolicy: IfNotPresent
   secret: moo
 service:

@@ -2,5 +2,5 @@ apiVersion: v2
 name: ui-moo
 description: moo.is
 type: application
-version: 1.1.84
-appVersion: 84
+version: 1.1.85
+appVersion: 85
