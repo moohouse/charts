@@ -3,7 +3,7 @@ config:
   instance: moo
   partof: mooheadtown
   component: front
-  namespace: barn
+  namespace: town
 deployment:
   replicaCount: 1
 container:
