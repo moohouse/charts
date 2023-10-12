@@ -83,6 +83,16 @@ entries:
     - https://github.com/moohouse/charts/releases/download/ui-moo-1.0.100/ui-moo-1.0.100.tgz
     version: 1.0.100
   - apiVersion: v2
+    appVersion: "88"
+    created: "2023-10-12T04:47:27.023325031Z"
+    description: moo.is
+    digest: deb600174a6acd1a713f608a451071b61943ea73384f7c670c2efa29c9cedaa3
+    name: ui-moo
+    type: application
+    urls:
+    - https://github.com/moohouse/charts/releases/download/ui-moo-1.0.88/ui-moo-1.0.88.tgz
+    version: 1.0.88
+  - apiVersion: v2
     appVersion: "83"
     created: "2023-04-28T02:01:39.180339428Z"
     description: moo.is
@@ -162,4 +172,4 @@ entries:
     urls:
     - https://github.com/moohouse/charts/releases/download/ui-moo-0.2.2/ui-moo-0.2.2.tgz
     version: 0.2.2
-generated: "2023-04-28T06:38:31.590071391Z"
+generated: "2023-10-12T04:47:27.023487332Z"
