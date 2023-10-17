@@ -1,5 +1,5 @@
 config:
-  name: ui-moo
+  name: site-moo
   instance: moo
   partof: mooheadtown
   component: front
