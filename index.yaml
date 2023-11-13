@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/moohouse/charts/releases/download/if-basic-auth-1.1.3/if-basic-auth-1.1.3.tgz
     version: 1.1.3
+  site-moo:
+  - apiVersion: v2
+    appVersion: "5"
+    created: "2023-11-13T05:45:44.965475725Z"
+    description: moo.is
+    digest: ee9a4cbb7f6a0001c9210e29861bf79c6f3b1169fac953f6126be590a63ef7e3
+    name: site-moo
+    type: application
+    urls:
+    - https://github.com/moohouse/charts/releases/download/site-moo-1.0.5/site-moo-1.0.5.tgz
+    version: 1.0.5
   ui-moo:
   - apiVersion: v2
     appVersion: "90"
@@ -192,4 +203,4 @@ entries:
     urls:
     - https://github.com/moohouse/charts/releases/download/ui-moo-0.2.2/ui-moo-0.2.2.tgz
     version: 0.2.2
-generated: "2023-10-17T06:17:53.984433275Z"
+generated: "2023-11-13T05:45:44.965537139Z"
