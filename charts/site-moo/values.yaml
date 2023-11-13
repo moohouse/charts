@@ -22,10 +22,10 @@ istio:
     host: ["moo.is"]
     gateway: ["gateway-moo-is"]
     stable:
-      host: ui-moo-stable.barn.svc.cluster.local
+      host: town-moo-stable.town.svc.cluster.local
       port: 9000
     canary:
-      host: ui-moo-canary.barn.svc.cluster.local
+      host: town-moo-canary.town.svc.cluster.local
       port: 9000
 pdb:
   min: 1
