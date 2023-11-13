@@ -13,6 +13,16 @@ entries:
     version: 1.1.3
   site-moo:
   - apiVersion: v2
+    appVersion: "6"
+    created: "2023-11-13T06:24:20.775303283Z"
+    description: moo.is
+    digest: 5c9de9a8d6235eb5e8495d00b3526ffc518398dcb64210d07b98210cdbba9046
+    name: site-moo
+    type: application
+    urls:
+    - https://github.com/moohouse/charts/releases/download/site-moo-1.0.6/site-moo-1.0.6.tgz
+    version: 1.0.6
+  - apiVersion: v2
     appVersion: "5"
     created: "2023-11-13T05:45:44.965475725Z"
     description: moo.is
@@ -203,4 +213,4 @@ entries:
     urls:
     - https://github.com/moohouse/charts/releases/download/ui-moo-0.2.2/ui-moo-0.2.2.tgz
     version: 0.2.2
-generated: "2023-11-13T05:45:44.965537139Z"
+generated: "2023-11-13T06:24:20.775356392Z"
