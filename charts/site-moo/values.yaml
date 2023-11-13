@@ -7,7 +7,7 @@ config:
 deployment:
   replicaCount: 1
 container:
-  image: ghcr.io/moohouse/ui-moo
+  image: ghcr.io/moohouse/site-moo
   tag: 5
   pullPolicy: IfNotPresent
   secret: moohouse
