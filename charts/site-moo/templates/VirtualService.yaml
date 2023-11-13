@@ -2,7 +2,7 @@ apiVersion: networking.istio.io/v1beta1
 kind: VirtualService
 metadata:
   name: {{ .Values.config.name }}
-  namespace: {{ .Values.config.namespace }}
+  namespace: default
   labels:
     app.kubernetes.io/name: {{ .Values.config.name }}
     app.kubernetes.io/instance: {{ .Values.config.instance }}
