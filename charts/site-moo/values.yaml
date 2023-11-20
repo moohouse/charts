@@ -25,7 +25,7 @@ istio:
       host: site-moo-stable.town.svc.cluster.local
       port: 9000
     canary:
-      host: site-moo-canary.town.svc.clluster.local
+      host: site-moo-canary.town.svc.cluster.local
       port: 9000
 pdb:
   min: 1
