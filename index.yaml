@@ -2,6 +2,16 @@ apiVersion: v1
 entries:
   keycloak:
   - apiVersion: v2
+    appVersion: "9"
+    created: "2023-11-24T05:29:03.283410051Z"
+    description: Keycloak
+    digest: 5ffc28a1d34cb079583c630295f5140b77e3c5e6493d142476a6b8263d9c11e1
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/moohouse/charts/releases/download/keycloak-1.0.9/keycloak-1.0.9.tgz
+    version: 1.0.9
+  - apiVersion: v2
     appVersion: "8"
     created: "2023-11-24T04:43:57.418976568Z"
     description: Keycloak
@@ -11,4 +21,15 @@ entries:
     urls:
     - https://github.com/moohouse/charts/releases/download/keycloak-1.0.8/keycloak-1.0.8.tgz
     version: 1.0.8
-generated: "2023-11-24T04:43:57.549659771Z"
+  site-moo:
+  - apiVersion: v2
+    appVersion: "9"
+    created: "2023-11-24T05:29:03.417118985Z"
+    description: Moo.is
+    digest: 2e4204d6ad2d0273310a290f957ecbb87cb88d0d2eb1996008808c61a6f07874
+    name: site-moo
+    type: application
+    urls:
+    - https://github.com/moohouse/charts/releases/download/site-moo-1.0.9/site-moo-1.0.9.tgz
+    version: 1.0.9
+generated: "2023-11-24T05:29:03.417132079Z"
