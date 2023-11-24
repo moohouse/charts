@@ -1,6 +1,6 @@
 apiVersion: v2
 name: site-moo
-description: moo.is
+description: Moo.is
 type: application
 version: 1.0.9
 appVersion: 9
