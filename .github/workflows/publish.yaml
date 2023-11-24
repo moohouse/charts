@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0
       - name: Import GPG key
         run: |
-          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --dearmor --output keyring.gpg
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --list-secret-keys --keyid-format=long
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
