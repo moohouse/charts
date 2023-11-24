@@ -37,7 +37,7 @@ rollout:
       keycloak:
         name: keycloak
         serviceAccountName: "keycloak"
-        image: ghcr.io/moohouse/keycloak:8
+        image: ghcr.io/moohouse/keycloak:9
         imagePullPolicy: IfNotPresent
         ports:
           - name: http
