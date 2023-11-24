@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Rollout
 metadata:
-  name: {{ .Values.config.name }}
-  namespace: {{ .Values.config.namespace }}
+  name: {{ .Values.base.name }}
+  namespace: {{ .Values.base.namespace }}
 spec:
-  replicas: {{ .Values.deployment.replicaCount }}
+  replicas: {{ .Values.rollout.replicas }}
   strategy:
     canary:
-      canaryService: {{ .Values.config.name }}-canary
-      stableService: {{ .Values.config.name }}-stable
+      canaryService: {{ .Values.base.name }}-canary
+      stableService: {{ .Values.base.name }}-stable
       trafficRouting:
         istio:
           virtualServices:
@@ -18,27 +18,32 @@ spec:
         - setWeight: 10
         - pause: {}
   revisionHistoryLimit: 3
-  selector:
-    matchLabels:
-      moo.is/name: {{ .Values.config.name }}
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: {{ .Values.config.name }}
-        app.kubernetes.io/instance: {{ .Values.config.instance }}
-        app.kubernetes.io/part-of: {{ .Values.config.partof }}
-        app.kubernetes.io/component: {{ .Values.config.component }}
-        moo.is/name: {{ .Values.config.name }}
+        {{- if .Values.rollout.labels }}
+          {{ .Values.base.labels | nindent 4 }}
+        {{- end }}
+        {{- if .Values.service.labels }}
+          {{ .Values.service.labels | nindent 4 }}
+        {{- end }}
+      annotations:
+        {{- if .Values.base.annotations }}
+          {{ .Values.base.annotations | nindent 4 }}
+        {{- end }}
+        {{- if .Values.service.annotations }}
+          {{ .Values.service.annotations | nindent 4 }}
+        {{- end }}
     spec:
       containers:
-        - name : {{ .Values.config.name }}
-          image: {{ .Values.container.image }}:{{ .Values.container.tag }}
-          imagePullPolicy: {{ .Values.container.pullPolicy }}
-          ports:
-            - containerPort: {{ .Values.service.targetPort }}
-              name: http
-              protocol: TCP
-      {{- if .Values.container.secret }}
+        - name : {{ .Values.rollout.spec.containers.keycloak.name }}
+          image: {{ .Values.rollout.spec.containers.keycloak.image }}
+          imagePullPolicy: {{ .Values.rollout.spec.containers.keycloak.imagePullPolicy }}
+          ports: {{ .Values.rollout.spec.containers.keycloak.ports }}
+      {{- if .Values.rollout.spec.containers.keycloak.imagePullSecrets }}
       imagePullSecrets:
-        - name : {{ .Values.container.secret }}
+        - name : {{ .Values.rollout.spec.containers.keycloak.imagePullSecrets }}
       {{- end }}
+  selector:
+    matchLabels: {{ .Values.service.selector }}
+

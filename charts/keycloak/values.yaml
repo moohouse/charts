@@ -1,36 +1,95 @@
-config:
+base:
   name: keycloak
-  instance: moo
-  partof: mooheadtown
-  component: front
   namespace: town
-deployment:
-  replicaCount: 1
-container:
-  image: ghcr.io/moohouse/keycloak
-  tag: 9
-  pullPolicy: IfNotPresent
-  secret: moohouse
+  labels: {}
+  annotations: {}
+  selector:
+    moo.is/name: keycloak
 service:
+  labels: {}
+  annotations: {}
   type: ClusterIP
-  port: 9000
-  targetPort: 9000
-istio:
-  rollout:
-    route: ["http"]
-  vs:
-    host: ["moo.is"]
-    gateway: ["gateway-moo-is"]
-    stable:
-      host: site-moo-stable.town.svc.cluster.local
-      port: 9000
-    canary:
-      host: site-moo-canary.town.svc.cluster.local
-      port: 9000
-pdb:
-  min: 1
-hpa:
-  min: 1
-  max: 4
-  cpu: 50
-  ram: 50
+  ports:
+    http:
+      port: 8080
+      targetPort: 8080
+      nodePort: 30303
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+   clientIP:
+     timeoutSeconds: 3600
+rollout:
+  labels: {}
+  annotations: {}
+  replicas: 1
+  istio:
+    virtualServices:
+      route: keycloak.town.svc.cluster.local
+  steps:
+    weight: 25
+    pause: {}
+  revisionHistoryLimit : 1
+  metadata:
+    labels: {}
+    annotations: {}
+  spec:
+    containers:
+      keycloak:
+        name: keycloak
+        serviceAccountName: "keycloak"
+        image: ghcr.io/moohouse/keycloak:8
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 8080
+            protocol: TCP
+        command:
+          - "java"
+        args:
+          - "kc.sh"
+        env:
+          - name: TZ
+            value: Asia/Seoul
+        resources:
+          requests:
+            cpu: 100m
+            memory: 500Mi
+          limits:
+            memory: 2000Mi
+        imagePullSecret:
+
+
+
+#          startupProbe:
+#            httpGet:
+#              path: /actuator/health/liveness
+#              port: 8081
+#              scheme: HTTP
+#            periodSeconds: 30
+#            timeoutSeconds: 10
+#            successThreshold: 1
+#            failureThreshold: 30
+#          livenessProbe:
+#            httpGet:
+#              path: /actuator/health/liveness
+#              port: 8081
+#              scheme: HTTP
+#            periodSeconds: 30
+#            timeoutSeconds: 10
+#            successThreshold: 1
+#            failureThreshold: 10
+#          readinessProbe:
+#            httpGet:
+#              path: /actuator/health/liveness
+#              port: 8081
+#              scheme: HTTP
+#            periodSeconds: 30
+#            timeoutSeconds: 10
+#            successThreshold: 1
+#            failureThreshold: 10
+#
+#
+#          volumeMounts:
+#            - mountPath: /config
+#              name: spring-config
+#

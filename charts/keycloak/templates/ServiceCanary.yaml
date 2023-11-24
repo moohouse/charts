@@ -1,21 +1,36 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ .Values.config.name }}-canary
-  namespace: {{ .Values.config.namespace }}
+  name: {{ .Values.base.name }}-canary
+  namespace: {{ .Values.base.namespace }}
   labels:
-    app.kubernetes.io/name: {{ .Values.config.name }}
-    app.kubernetes.io/instance: {{ .Values.config.instance }}
-    app.kubernetes.io/part-of: {{ .Values.config.partof }}
-    app.kubernetes.io/component: {{ .Values.config.component }}
-    moo.is/name: {{ .Values.config.name }}
+    {{- if .Values.base.labels }}
+      {{ .Values.base.labels | nindent 4 }}
+    {{- end }}
+    {{- if .Values.service.labels }}
+      {{ .Values.service.labels | nindent 4 }}
+    {{- end }}
+  annotations:
+    {{- if .Values.base.annotations }}
+      {{ .Values.base.annotations | nindent 4 }}
+    {{- end }}
+    {{- if .Values.service.annotations }}
+      {{ .Values.service.annotations | nindent 4 }}
+    {{- end }}
 spec:
   type: {{ .Values.service.type }}
+  {{- if .Values.service.sessionAffinity }}
+  sessionAffinity: {{ .Values.service.sessionAffinity }}
+  {{- end }}
+  {{- if .Values.service.sessionAffinityConfig }}
+  sessionAffinityConfig: {{ .Values.service.sessionAffinityConfig | nindent 4 }}
+  {{- end }}
   ports:
     - name: http
-      port: {{ .Values.service.port }}
-      protocol: TCP
-      targetPort: {{ .Values.service.targetPort }}
+      port: {{ .Values.service.ports.http.port }}
+      targetPort: {{ .Values.service.ports.http.targetPort }}
+      {{- if .Values.service.ports.http.nodePort }}
+      nodePort: {{ .Values.service.ports.http.nodePort }}
+      {{- end }}
   selector:
-    moo.is/name: {{ .Values.config.name }}
-  sessionAffinity: None
+    {{ .Values.base.selector }}
