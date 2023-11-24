@@ -12,6 +12,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
+      - name: Import GPG key
+        run: |
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | gpg --dearmor --output keyring.gpg
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
@@ -20,6 +23,7 @@ jobs:
         uses: helm/chart-releaser-action@v1
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-
-
+          CR_KEY: Moo <moo@moo.is>
+          CR_KEYRING: keyring.gpg
+          CR_SIGN: true
 
