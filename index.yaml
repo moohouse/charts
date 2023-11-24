@@ -1,3 +1,14 @@
 apiVersion: v1
-
+entries:
+  keycloak:
+  - apiVersion: v2
+    appVersion: "8"
+    created: "2023-11-24T04:43:57.418976568Z"
+    description: Keycloak
+    digest: c3c6463d0a8df7400535af212535e5b58693e4c3c3b35de1e51fba8405d53983
+    name: keycloak
+    type: application
+    urls:
+    - https://github.com/moohouse/charts/releases/download/keycloak-1.0.8/keycloak-1.0.8.tgz
+    version: 1.0.8
 generated: "2023-11-24T04:43:57.549659771Z"
