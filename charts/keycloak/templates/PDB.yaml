@@ -1,0 +1,16 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ .Values.config.name }}
+  namespace: {{ .Values.config.namespace }}
+  labels:
+    app.kubernetes.io/name: {{ .Values.config.name }}
+    app.kubernetes.io/instance: {{ .Values.config.instance }}
+    app.kubernetes.io/part-of: {{ .Values.config.partof }}
+    app.kubernetes.io/component: {{ .Values.config.component }}
+    moo.is/name: {{ .Values.config.name }}
+spec:
+  minAvailable: {{ .Values.pdb.min }}
+  selector:
+    matchLabels:
+      moo.is/name: {{ .Values.config.name }}

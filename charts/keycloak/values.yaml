@@ -1,0 +1,36 @@
+config:
+  name: keycloak
+  instance: moo
+  partof: mooheadtown
+  component: front
+  namespace: town
+deployment:
+  replicaCount: 1
+container:
+  image: ghcr.io/moohouse/keycloak
+  tag: 9
+  pullPolicy: IfNotPresent
+  secret: moohouse
+service:
+  type: ClusterIP
+  port: 9000
+  targetPort: 9000
+istio:
+  rollout:
+    route: ["http"]
+  vs:
+    host: ["moo.is"]
+    gateway: ["gateway-moo-is"]
+    stable:
+      host: site-moo-stable.town.svc.cluster.local
+      port: 9000
+    canary:
+      host: site-moo-canary.town.svc.cluster.local
+      port: 9000
+pdb:
+  min: 1
+hpa:
+  min: 1
+  max: 4
+  cpu: 50
+  ram: 50
